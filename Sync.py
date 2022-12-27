@@ -29,10 +29,10 @@ if(os.path.exists(f"{PATH}/lastCommit.json")):
     os.system(CURL_REQUEST)
     with open(f"{PATH}/lastCommit.json", "r") as f:
         if(f.read() != open(f"{PATH}/lastCommit-1.json", "r").read()):
-            print("New commit")
             checkRemoveBuildRun()
         os.system(f"rm {PATH}/lastCommit.json; \
         mv {PATH}/lastCommit-1.json {PATH}/lastCommit.json")
 else:
     os.system(CURL_REQUEST)
     checkRemoveBuildRun()
+    os.system(f"mv {PATH}/lastCommit-1.json {PATH}/lastCommit.json")
